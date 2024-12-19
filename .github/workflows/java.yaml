@@ -1,0 +1,23 @@
+name: JavaActions
+on: 
+    push: 
+        branches: ['main']
+    workflow_dispatch:
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Check WS
+              run: pwd
+            - name: JDK
+              uses: actions/setup-java@v4
+              with:
+                java-version: 18
+            - name: Check Java Version
+              run: java --version
+            - name: Compile
+              run: javac Example.java
+            - name: Run
+              run: java Example.java
